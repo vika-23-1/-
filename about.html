@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>О нас — Петля моды</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: #fefaf3;
+      color: #5a3e36;
+    }
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .chart-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      background: white;
+      padding: 1rem;
+    }
+    nav a {
+      transition: color 0.3s;
+      color: inherit;
+    }
+    nav a:hover {
+      color: white !important;
+    }
+      
+</style>
+</head>
+<body class="text-[#5a3e36]">
+  <!-- Header -->
+  <header class="bg-[#5a3e36] text-[#f2d479] shadow-md">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between py-4 px-6">
+      <div class="flex items-center space-x-2">
+        <img src="images/logo.png" alt="Петля моды" class="w-10 h-10 rounded-full border-2 border-[#f2d479]" />
+        <span class="text-2xl font-bold tracking-wide">Петля моды</span>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-lg font-semibold items-center">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html" class="text-white text-xl font-extrabold">О нас</a>
+        <a href="contact.html">Контакты</a>
+        <a href="cart.html">Корзина</a>
+        <a href="account.html">Аккаунт</a>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-screen-lg mx-auto pt-28 px-4 sm:px-6 lg:px-8 space-y-16 fade-in-up">
+    <section class="text-center">
+      <h2 class="text-4xl font-extrabold text-[#5a3e36] mb-4">О нас</h2>
+      <p class="text-lg text-[#7b5c50]">Петля моды — стиль с душой.</p>
+      <p class="mt-4 max-w-2xl mx-auto">Все началось с мечты. Мечты о том, чтобы создать место, где каждый мог бы найти не просто одежду, а частичку себя.</p>
+    </section>
+    <section>
+      <h3 class="text-2xl font-semibold text-center mb-6">Рост нашего бренда</h3>
+      <div class="chart-container h-80">
+        <canvas id="growthChart"></canvas>
+      </div>
+    </section>
+    <section>
+      <h3 class="text-2xl font-semibold text-center mb-6">Принципы нашего бренда</h3>
+      <div class="chart-container h-80">
+        <canvas id="principlesChart"></canvas>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-[#f9f4e8] text-[#5a3e36] text-center py-8 px-4 mt-16">
+    <p class="text-lg sm:text-xl font-medium mb-2">♡ Этот сайт можно спокойно копировать — мы не против, даже рады. ♡</p>
+    <p class="text-sm mb-1">
+      <a href="#">Instagram</a> |
+      <a href="#">Telegram</a> |
+      <a href="mailto:hello@petlyamody.kz">hello@petlyamody.kz</a>
+    </p>
+    <p class="text-xs mt-1">P.S. Даже кнопки щеголяют новыми стилями.</p>
+  </footer>
+  <script>
+    new Chart(document.getElementById('growthChart'), {
+      type: 'bar',
+      data: {
+        labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+        datasets: [
+          {
+            label: 'Петля моды',
+            data: [0, 60, 45, 130, 180, 150, 250, 310],
+            backgroundColor: '#f2d479',
+            borderRadius: 6,
+            hoverBackgroundColor: '#ffd84a'
+          },
+          {
+            label: 'Zara',
+            data: [100, 90, 130, 170, 200, 240, 230, 290],
+            backgroundColor: '#8b5cf6',
+            borderRadius: 6,
+            hoverBackgroundColor: '#a78bfa'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 1500,
+          easing: 'easeInOutQuart'
+        },
+        plugins: {
+          tooltip: {
+            backgroundColor: '#000',
+            titleColor: '#fff',
+            bodyColor: '#fff'
+          },
+          legend: {
+            labels: { color: '#5a3e36' }
+          }
+        },
+        scales: {
+          y: { beginAtZero: true, ticks: { color: '#5a3e36' } },
+          x: { ticks: { color: '#5a3e36' } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('principlesChart'), {
+      type: 'pie',
+      data: {
+        labels: ['Наследие', 'Самобытность', 'Устойчивость', 'Комфорт'],
+        datasets: [{
+          data: [35, 25, 20, 20],
+          backgroundColor: ['#e0b67f', '#a86b4c', '#d3c09c', '#845d48'],
+          hoverOffset: 20
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          animateScale: true,
+          animateRotate: true,
+          duration: 1200,
+          easing: 'easeOutBounce'
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: { color: '#5a3e36' }
+          },
+          tooltip: {
+            backgroundColor: '#000',
+            titleColor: '#fff',
+            bodyColor: '#fff'
+          }
+        }
+      }
+    });
+  </script>

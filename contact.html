@@ -1,0 +1,303 @@
+<!-- ШРИФТ + TAILWIND -->
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: #fefaf3;
+      color: #5a3e36;
+    }
+    .menu-open #mobile-menu {
+      display: block;
+    }
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .chart-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      background: white;
+      padding: 1rem;
+    }
+    nav a {
+      transition: color 0.3s;
+      color: inherit;
+    }
+    nav a:hover {
+      color: white !important;
+    }
+  </style>
+</head>
+
+<body class="text-[#5a3e36] bg-[#fefaf3]">
+
+<!-- HEADER -->
+<header class="bg-[#5a3e36] text-[#f2d479] shadow-md fixed top-0 w-full z-50">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between py-4 px-6">
+    <div class="flex items-center space-x-2">
+      <img src="images/logo.png" alt="Петля моды" class="w-10 h-10 rounded-full border-2 border-[#f2d479]" />
+      <span class="text-2xl font-bold tracking-wide">Петля моды</span>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-lg font-semibold items-center">
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="contact.html" class="text-white text-xl font-extrabold">Контакты</a>
+           <a href="cart.html">Корзина</a>
+      <a href="account.html">Аккаунт</a>
+    </nav>
+    <button id="menu-toggle" class="md:hidden text-[#f2d479] focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <nav id="mobile-menu" class="md:hidden hidden bg-[#5a3e36] px-6 pb-4">
+    <a href="index.html" class="block py-2">Главная</a>
+    <a href="catalog.html" class="block py-2">Каталог</a>
+    <a href="about.html" class="block py-2">О нас</a>
+    <a href="contact.html" class="block py-2 text-white font-bold">Контакты</a>
+     <a href="cart.html" class="block py-2">Корзина</a>
+    <a href="account.html" class="block py-2">Аккаунт</a>
+  </nav>
+</header>
+
+<main class="max-w-screen-lg mx-auto pt-40 px-4 sm:px-6 lg:px-8 fade-in-up">
+  <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+    <div class="p-8 md:w-1/2">
+      <h1 class="text-3xl font-extrabold text-[#5a3e36] mb-6">Свяжитесь с нами</h1>
+      <p class="mb-4 text-sm">Email: <a href="mailto:hello@petlyamody.kz" class="text-[#5a3e36] hover:underline">hello@petlyamody.kz</a></p>
+      <p class="mb-4 text-sm">Телефон: <a href="tel:+77771234567" class="text-[#5a3e36] hover:underline">+7 (705) 404-00-00</a></p>
+      <p class="mb-4 text-sm">Адрес:<br>г. Швейноск<br>ул. Пуговичная, д. 13, подъезд с надписью «Мода спасёт мир»</p>
+      <h2 class="text-xl font-bold mt-6 mb-2">Социальные сети</h2>
+      <div class="flex space-x-4">
+        <a href="#" class="text-[#5a3e36] hover:underline text-sm">VK</a>
+        <a href="#" class="text-[#5a3e36] hover:underline text-sm">Instagram</a>
+        <a href="#" class="text-[#5a3e36] hover:underline text-sm">Facebook</a>
+      </div>
+    </div>
+    <form id="contact-form" class="bg-gray-50 p-8 md:w-1/2 space-y-4">
+      <div>
+        <label for="name" class="block text-sm font-medium">Имя</label>
+        <input type="text" id="name" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" required>
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium">Email</label>
+        <input type="email" id="email" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" required>
+      </div>
+      <div>
+        <label for="message" class="block text-sm font-medium">Сообщение</label>
+        <textarea id="message" rows="4" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" required></textarea>
+      </div>
+      <button type="submit" id="submit-button" class="w-full bg-[#5a3e36] text-white py-2 rounded-lg font-semibold hover:bg-[#4a2e28] transition relative overflow-hidden">
+        <span class="block transition-transform duration-700 ease-out origin-bottom-left" id="btn-label">Отправить</span>
+      </button>
+      <div id="confirmation" class="hidden text-center mt-8 text-[#5a3e36] text-lg font-semibold animate-jump">
+        ✉️ Письмо отправлено!
+      </div>
+    </form>
+  </div>
+</main>
+
+<footer class="bg-[#f9f4e8] text-[#5a3e36] text-center py-8 px-4 mt-16">
+  <p class="text-lg sm:text-xl font-medium mb-2">♡ Этот сайт можно спокойно копировать — мы не против, даже рады. ♡</p>
+  <p class="text-sm mb-1">
+    <a href="#">Instagram</a> |
+    <a href="#">Telegram</a> |
+    <a href="mailto:hello@petlyamody.kz">hello@petlyamody.kz</a>
+  </p>
+  <p class<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Кодировка и адаптация под мобильные устройства -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты — Петля моды</title>
+
+  <!-- Подключаем шрифт Raleway из Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Подключаем TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Собственные стили страницы -->
+  <style>
+    /* Настройки шрифта и фона для всего тела страницы */
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: #fefaf3;
+      color: #5a3e36;
+    }
+
+    /* Показываем мобильное меню, когда body получает класс menu-open */
+    .menu-open #mobile-menu {
+      display: block;
+    }
+
+    /* Анимация появления блока вверх */
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Наведение на ссылку в навигации */
+    nav a {
+      transition: color 0.3s;
+      color: inherit;
+    }
+    nav a:hover {
+      color: white !important;
+    }
+  </style>
+</head>
+
+<body class="text-[#5a3e36] bg-[#fefaf3]">
+
+<!-- Шапка сайта -->
+<header class="bg-[#5a3e36] text-[#f2d479] shadow-md fixed top-0 w-full z-50">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between py-4 px-6">
+    
+    <!-- Логотип и название -->
+    <div class="flex items-center space-x-2">
+      <img src="images/logo.png" alt="Петля моды" class="w-10 h-10 rounded-full border-2 border-[#f2d479]" />
+      <span class="text-2xl font-bold tracking-wide">Петля моды</span>
+    </div>
+
+    <!-- Основное меню для ПК -->
+    <nav class="hidden md:flex space-x-6 text-lg font-semibold items-center">
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="contact.html" class="text-white text-xl font-extrabold">Контакты</a>
+      <a href="cart.html">Корзина</a>
+      <a href="account.html">Аккаунт</a>
+    </nav>
+
+    <!-- Кнопка бургер-меню для мобильных -->
+    <button id="menu-toggle" class="md:hidden text-[#f2d479] focus:outline-none">
+      <!-- Иконка бургера -->
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Мобильное меню, по умолчанию скрыто -->
+  <nav id="mobile-menu" class="md:hidden hidden bg-[#5a3e36] px-6 pb-4">
+    <a href="index.html" class="block py-2">Главная</a>
+    <a href="catalog.html" class="block py-2">Каталог</a>
+    <a href="about.html" class="block py-2">О нас</a>
+    <a href="contact.html" class="block py-2 text-white font-bold">Контакты</a>
+    <a href="cart.html" class="block py-2">Корзина</a>
+    <a href="account.html" class="block py-2">Аккаунт</a>
+  </nav>
+</header>
+
+<!-- Основной контент -->
+<main class="max-w-screen-lg mx-auto pt-40 px-4 sm:px-6 lg:px-8 fade-in-up">
+  <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+
+    <!-- Левая колонка с контактами -->
+    <div class="p-8 md:w-1/2">
+      <h1 class="text-3xl font-extrabold text-[#5a3e36] mb-6">Свяжитесь с нами</h1>
+      <p class="mb-4 text-sm">Email: <a href="mailto:hello@petlyamody.kz" class="text-[#5a3e36] hover:underline">hello@petlyamody.kz</a></p>
+      <p class="mb-4 text-sm">Телефон: <a href="tel:+77771234567" class="text-[#5a3e36] hover:underline">+7 (705) 404-00-00</a></p>
+      <p class="mb-4 text-sm">Адрес:<br>г. Швейноск<br>ул. Пуговичная, д. 13, подъезд с надписью «Мода спасёт мир»</p>
+      
+      <!-- Социальные сети -->
+      <h2 class="text-xl font-bold mt-6 mb-2">Социальные сети</h2>
+      <div class="flex space-x-4">
+        <a href="#" class="text-[#5a3e36] hover:underline text-sm">VK</a>
+        <a href="#" class="text-[#5a3e36] hover:underline text-sm">Instagram</a>
+        <a href="#" class="text-[#5a3e36] hover:underline text-sm">Facebook</a>
+      </div>
+    </div>
+
+    <!-- Правая колонка — форма обратной связи -->
+    <form id="contact-form" class="bg-gray-50 p-8 md:w-1/2 space-y-4">
+      <!-- Поле имя -->
+      <div>
+        <label for="name" class="block text-sm font-medium">Имя</label>
+        <input type="text" id="name" name="user_name" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" required>
+      </div>
+
+      <!-- Поле email -->
+      <div>
+        <label for="email" class="block text-sm font-medium">Email</label>
+        <input type="email" id="email" name="user_email" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" required>
+      </div>
+
+      <!-- Поле сообщение -->
+      <div>
+        <label for="message" class="block text-sm font-medium">Сообщение</label>
+        <textarea id="message" name="message" rows="4" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" required></textarea>
+      </div>
+
+      <!-- Кнопка отправки -->
+      <button type="submit" id="submit-button" class="w-full bg-[#5a3e36] text-white py-2 rounded-lg font-semibold hover:bg-[#4a2e28] transition relative overflow-hidden">
+        <span id="btn-label" class="block transition-transform duration-700 ease-out origin-bottom-left">Отправить</span>
+      </button>
+
+      <!-- Уведомление об отправке -->
+      <div id="confirmation" class="hidden text-center mt-8 text-[#5a3e36] text-lg font-semibold animate-jump">
+        ✉️ Письмо отправлено!
+      </div>
+    </form>
+  </div>
+</main>
+
+<!-- Подвал сайта -->
+<footer class="bg-[#f9f4e8] text-[#5a3e36] text-center py-8 px-4 mt-16">
+  <p class="text-lg sm:text-xl font-medium mb-2">♡ Этот сайт можно спокойно копировать — мы не против, даже рады. ♡</p>
+  <p class="text-sm mb-1">
+    <a href="#">Instagram</a> |
+    <a href="#">Telegram</a> |
+    <a href="mailto:hello@petlyamody.kz">hello@petlyamody.kz</a>
+  </p>
+  <p class="text-xs mt-1">P.S. Даже кнопки щеголяют новыми стилями.</p>
+</footer>
+
+<!-- Скрипты -->
+<script>
+  // Обработка открытия и закрытия бургер-меню
+  document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Обработка отправки формы (фейковая)
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Отменяем стандартную отправку
+
+    const confirmation = document.getElementById('confirmation');
+    confirmation.classList.remove('hidden'); // Показываем сообщение
+
+    this.reset(); // Очищаем поля
+
+    // Скрываем сообщение через 4 секунды
+    setTimeout(() => {
+      confirmation.classList.add('hidden');
+    }, 4000);
+  });
+</script>
+
+</body>
+</html>
+="text-xs mt-1">P.S. Даже кнопки щеголяют новыми стилями.</p>
+</footer>
+
+<script>
+  document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('menu-open');
+  });
+</script>
+</body>

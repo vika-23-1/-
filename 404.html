@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Страница не найдена — Петля моды</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pilowlava&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Pilowlava', cursive;
+    }
+    .loop-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin: 0 12px;
+    }
+    .digit {
+      font-size: 4rem;
+      color: #5a3e36;
+    }
+    .button-style {
+      background-color: #5a3e36;
+      color: #f2d479;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .button-style:hover {
+      background-color: #4a322b;
+    }
+    main {
+      text-align: center;
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Хедер -->
+  <header class="bg-[#5a3e36] text-[#f2d479] shadow-md fixed top-0 w-full z-50">
+    <div class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="images/logo.png" alt="Логотип" class="w-10 h-10 rounded-full border-2 border-[#f2d479]" />
+        <div class="text-xl font-bold">Петля моды</div>
+      </div>
+      <nav class="hidden md:flex space-x-8 text-lg font-semibold items-center justify-center">
+        <a href="index.html" class="hover:text-[#f9f4e8] transition-colors">Главная</a>
+        <a href="catalog.html" class="hover:text-[#f9f4e8] transition-colors">Каталог</a>
+        <a href="about.html" class="hover:text-[#f9f4e8] transition-colors">О нас</a>
+        <a href="contact.html" class="hover:text-[#f9f4e8] transition-colors">Контакты</a>
+        <a href="cart.html" class="hover:text-[#f9f4e8] transition-colors">Корзина</a>
+        <a href="account.html" class="hover:text-[#f9f4e8] transition-colors">Аккаунт</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Контент -->
+  <main class="pt-32 px-4">
+    <div class="flex items-center justify-center mb-4">
+      <span class="digit">4</span>
+      <img src="images/loop.png" alt="Пуговица как 0" class="loop-img" />
+      <span class="digit">4</span>
+    </div>
+    <p class="text-[#5a3e36] text-2xl font-bold mb-6">
+      Ты слишком модный для этой страницы. Она не выдержала и сбежала.
+    </p>
+    <a href="index.html" class="button-style">Вернуться на главную</a>
+  </main>
+
+  <footer class="bg-[#f9f4e8] text-[#5a3e36] text-center py-8 px-4 mt-auto">
+    <p class="text-lg sm:text-xl font-medium mb-2">♡ Этот сайт можно спокойно копировать — мы не против, даже рады. ♡</p>
+    <p class="text-sm mb-1">
+      <a href="#">Instagram</a> |
+      <a href="#">Telegram</a> |
+      <a href="mailto:hello@petlyamody.kz">hello@petlyamody.kz</a>
+    </p>
+    <p class="text-xs mt-1">P.S. Даже кнопки щеголяют новыми стилями.</p>
+  </footer>
+</body>
+</html>

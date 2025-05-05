@@ -1,0 +1,149 @@
+<!DOCTYPE html> <!-- Объявление типа документа: HTML5 -->
+<html lang="ru"> <!-- Открытие тега HTML с указанием языка страницы (русский) -->
+<head> <!-- Начало секции заголовка страницы -->
+  <meta charset="utf-8"/> <!-- Установка кодировки символов UTF-8 -->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/> <!-- Адаптивность для мобильных устройств -->
+  <title>Петля моды — Главная</title> <!-- Заголовок страницы во вкладке браузера -->
+
+  <!-- Подключение шрифта Raleway из Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&amp;display=swap" rel="stylesheet"/>
+
+  <!-- Подключение библиотеки Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Стили страницы -->
+  <style>
+    :root {
+      --main-brown: #5a3e36;       /* Основной коричневый цвет (шрифт, фон) */
+      --accent-gold: #f2d479;      /* Акцентный золотой цвет (ссылки, кнопки) */
+      --cream-bg: #faf3e0;         /* Цвет фона (молочный/бежевый) */
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif; /* Установка основного шрифта */
+      background-color: var(--cream-bg);  /* Цвет фона всей страницы */
+      color: var(--main-brown);           /* Цвет текста */
+      min-height: 100vh;                  /* Минимальная высота страницы на весь экран */
+      display: flex;
+      flex-direction: column;             /* Расположение элементов вертикально */
+    }
+
+    main {
+      flex: 1; /* Занимает оставшееся место между хедером и футером */
+      background: linear-gradient(180deg, #faf3e0, #f0e6d2); /* Градиент фона */
+      box-shadow: inset 0 0 100px rgba(90, 62, 54, 0.1); /* Внутренняя тень */
+    }
+
+    nav a {
+      color: var(--accent-gold);       /* Цвет ссылок меню */
+      transition: all 0.3s ease;       /* Плавность при наведении */
+      position: relative;
+      display: inline-block;
+      padding-bottom: 4px;             /* Отступ снизу */
+    }
+
+    nav a:hover,
+    nav a:focus {
+      text-decoration: none;          /* Убираем подчеркивание */
+      transform: scale(1.05);         /* Увеличение ссылки при наведении */
+      color: white;                   /* Изменение цвета текста */
+    }
+
+    .btn-retro {
+      animation: popIn 1.6s ease-out both;   /* Анимация появления кнопки */
+      transform-origin: center;              /* Точка трансформации по центру */
+    }
+
+    .btn-retro:hover {
+      transform: translateY(-2px);           /* Смещение кнопки вверх при наведении */
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35); /* Тень при наведении */
+    }
+
+    .hero-img img {
+      border-radius: 12px;                    /* Скругление углов */
+      object-fit: cover;                      /* Обрезка изображения по контейнеру */
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);    /* Тень вокруг изображения */
+      filter: saturate(1.1) contrast(1.1);     /* Насыщенность и контрастность */
+      animation: popIn 1.4s ease-out both;     /* Анимация появления */
+    }
+
+    .hero-text {
+      animation: fadeSlideUp 1.2s ease-out both; /* Анимация появления текста */
+    }
+
+    /* Анимация появления текста с подъёмом */
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Анимация появления с масштабом */
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      80% { opacity: 1; transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body class="relative"> <!-- Начало тела страницы с относительным позиционированием -->
+
+<!-- Шапка сайта (header) -->
+<header class="bg-[--main-brown] text-[--accent-gold] shadow-md fixed top-0 w-full z-50">
+  <div class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Логотип и название -->
+    <div class="flex items-center gap-3">
+      <img alt="Логотип" class="w-10 h-10 rounded-full border-2 border-[--accent-gold]" src="images/logo.png"/>
+      <div class="text-xl font-bold">Петля моды</div> <!-- Название сайта -->
+    </div>
+
+    <!-- Навигационное меню (для десктопа) -->
+    <nav class="hidden md:flex space-x-6 text-lg font-medium">
+      <a class="text-white text-xl font-extrabold" href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="contact.html">Контакты</a>
+      <a href="cart.html">Корзина</a>
+      <a href="account.html">Аккаунт</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Основной блок страницы -->
+<main class="relative z-10 pt-28 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 w-full bg-[#fdf6e9] rounded-xl shadow-lg border border-[#e0d8ca]">
+  
+  <!-- Текстовый блок с заголовком и описанием -->
+  <div class="hero-text max-w-xl text-center">
+    <h1 class="text-4xl font-bold mb-4 leading-tight">
+      Создай свой ретро-стиль с <span style="color:var(--main-brown)">Петлёй моды</span>
+    </h1>
+    <p class="text-lg mb-6 leading-relaxed">
+      Настоящая мода из прошлого века — в новой жизни. Будь дерзким. Будь ностальгичным.
+    </p>
+    <!-- Кнопка перехода в каталог -->
+    <a class="btn-retro inline-block bg-[--main-brown] text-white py-3 px-6 rounded-xl font-bold uppercase" href="catalog.html">
+      Перейти в каталог
+    </a>
+  </div>
+
+  <!-- Блок с изображением -->
+  <div class="hero-img max-w-md w-full mx-auto">
+    <img alt="Retro Fashion" class="w-full h-auto" src="images/glavniy.png"/>
+  </div>
+</main>
+
+<!-- Подвал сайта -->
+<footer class="bg-[#f9f4e8] text-[#5a3e36] text-center py-8 px-4 mt-16">
+  <p class="text-lg sm:text-xl font-medium mb-2">
+    ♡ Этот сайт можно спокойно копировать — мы не против, даже рады. ♡
+  </p>
+  <p class="text-sm mb-1">
+    <a href="#">Instagram</a> |
+    <a href="#">Telegram</a> |
+    <a href="mailto:hello@petlyamody.kz">hello@petlyamody.kz</a>
+  </p>
+  <p class="text-xs mt-1">P.S. Даже кнопки щеголяют новыми стилями.</p>
+</footer>
+
+</body>
+</html>

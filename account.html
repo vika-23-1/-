@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Аккаунт — Петля моды</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: #faf3e0;
+      color: #5a3e36;
+      font-family: 'Raleway', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header, footer {
+      background-color: #5a3e36;
+      color: #f2d479;
+    }
+    nav a {
+      color: #f2d479;
+    }
+    nav a.active {
+      color: #ffffff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="pt-[72px]">
+
+<header class="fixed top-0 left-0 right-0 shadow-md z-50 bg-[#5a3e36] text-[#f2d479]">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between py-3 px-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="images/logo.png" alt="Логотип" class="w-10 h-10 rounded-full border-2 border-[#f2d479]" />
+      <span class="text-xl font-bold">Петля моды</span>
+    </a>
+    <div class="md:hidden">
+      <button id="burgerBtn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-lg font-semibold">
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="contact.html">Контакты</a>
+      <a href="cart.html">Корзина</a>
+      <a href="account.html" class="active">Аккаунт</a>
+      <button id="logoutBtn" class="bg-[#f2d479] text-[#5a3e36] px-3 py-1 rounded hover:opacity-90">Выйти</button>
+    </nav>
+  </div>
+  <div id="mobileNav" class="md:hidden hidden flex-col px-6 pb-4 space-y-2 text-lg font-semibold">
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="about.html">О нас</a>
+    <a href="contact.html">Контакты</a>
+    <a href="cart.html">Корзина</a>
+    <a href="account.html" class="active">Аккаунт</a>
+    <button id="logoutBtnMobile" class="bg-[#f2d479] text-[#5a3e36] px-3 py-1 rounded hover:opacity-90">Выйти</button>
+  </div>
+</header>
+
+<main id="authBlock" class="max-w-md mx-auto px-4 py-16">
+  <div class="bg-white rounded-xl shadow p-6 w-full">
+    <div class="flex">
+      <button id="login-tab" class="w-1/2 text-center py-3 font-semibold border-b-4 border-[#5a3e36] bg-white text-[#5a3e36]">Вход</button>
+      <button id="register-tab" class="w-1/2 text-center py-3 font-semibold bg-[#f2e8db] text-[#9c8372]">Регистрация</button>
+    </div>
+    <div id="form-container" class="mt-4">
+      <form id="login-form" class="space-y-4">
+        <input id="email" type="email" placeholder="E-mail" class="w-full p-3 border rounded bg-white" required />
+        <input id="password-input" type="password" placeholder="Пароль" class="w-full p-3 border rounded bg-white" required />
+        <button type="submit" class="w-full bg-[#5a3e36] text-[#f2d479] py-2 rounded font-bold hover:opacity-90">Войти</button>
+      </form>
+      <form id="registration-form" class="space-y-4 hidden">
+        <input type="text" id="reg-name" placeholder="Имя" class="w-full p-3 border rounded bg-white" required />
+        <input type="email" id="reg-email" placeholder="Email" class="w-full p-3 border rounded bg-white" required />
+        <input type="password" id="register-password-input" placeholder="Пароль" class="w-full p-3 border rounded bg-white" required />
+        <button type="submit" class="w-full bg-[#5a3e36] text-[#f2d479] py-2 rounded font-bold hover:opacity-90">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<main id="accountBlock" class="max-w-screen-md mx-auto px-4 py-12 hidden">
+  <h1 class="text-3xl font-bold text-center mb-6">Добро пожаловать, <span id="username">Пользователь</span>!</h1>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold mb-4">Ваш заказ</h2>
+    <div id="orderInfo" class="bg-white shadow rounded-lg p-4"></div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold mb-4">Информация о доставке</h2>
+    <form id="deliveryForm" class="space-y-4">
+      <input type="text" id="delivery-name" placeholder="ФИО получателя" class="w-full p-3 border rounded" required />
+      <input type="tel" id="delivery-phone" placeholder="Телефон" class="w-full p-3 border rounded" required />
+      <input type="text" id="delivery-address" placeholder="Адрес доставки" class="w-full p-3 border rounded" required />
+      <textarea id="delivery-comment" placeholder="Комментарий к заказу (необязательно)" class="w-full p-3 border rounded"></textarea>
+    </form>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold mb-4">Выбранный способ оплаты</h2>
+    <select id="paymentMethod" class="w-full p-3 border rounded bg-white">
+      <option value="Карта">💳 Карта (Visa / MasterCard / Kaspi)</option>
+      <option value="Электронный кошелёк">💼 Электронный кошелёк (QIWI, Яндекс)</option>
+      <option value="Наложенный платёж">📦 Наложенный платёж</option>
+    </select>
+    <button onclick="confirmOrder()" class="mt-4 w-full bg-[#5a3e36] text-[#f2d479] py-2 rounded font-bold hover:opacity-90">Подтвердить заказ</button>
+    <div id="confirmationMessage"></div>
+  </section>
+</main>
+
+<footer class="bg-[#f9f4e8] text-[#5a3e36] text-center py-8 px-4 mt-16">
+<p class="text-lg sm:text-xl font-medium mb-2">♡ Этот сайт можно спокойно копировать — мы не против, даже рады. ♡</p>
+<p class="text-sm mb-1">
+<a href="#">Instagram</a> |
+        <a href="#">Telegram</a> |
+        <a href="mailto:hello@petlyamody.kz">hello@petlyamody.kz</a>
+</p>
+<p class="text-xs mt-1">P.S. Даже кнопки щеголяют новыми стилями.</p>
+</footer>
+
+<script>
+  const user = JSON.parse(localStorage.getItem('user'));
+  const order = JSON.parse(localStorage.getItem('order')) || [];
+
+  const accountBlock = document.getElementById('accountBlock');
+  const authBlock = document.getElementById('authBlock');
+
+  if (user) {
+    showAccount();
+  } else {
+    authBlock.classList.remove('hidden');
+  }
+
+  function showAccount() {
+    document.getElementById('username').textContent = user.name || 'Пользователь';
+    authBlock.classList.add('hidden');
+    accountBlock.classList.remove('hidden');
+
+    const orderInfo = document.getElementById('orderInfo');
+    if (order.length === 0) {
+      orderInfo.innerHTML = "<p class='text-gray-600'>У вас нет оформленных заказов.</p>";
+    } else {
+      let html = `<table class="w-full border border-[#5a3e36] text-left"><thead class="bg-[#5a3e36] text-[#f2d479]">
+        <tr><th class="p-2 border">Товар</th><th class="p-2 border">Размер</th><th class="p-2 border">Кол-во</th><th class="p-2 border">Сумма</th></tr>
+      </thead><tbody>`;
+      let total = 0;
+      order.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        html += `<tr class="border-b">
+          <td class="p-2 border">${item.name}</td>
+          <td class="p-2 border">${item.size || '—'}</td>
+          <td class="p-2 border">${item.quantity}</td>
+          <td class="p-2 border">${itemTotal} ₸</td>
+        </tr>`;
+      });
+      html += `</tbody></table><p class="mt-4 text-right font-bold">Общая сумма: ${total} ₸</p>`;
+      orderInfo.innerHTML = html;
+    }
+  }
+
+  function confirmOrder() {
+    const name = document.getElementById('delivery-name').value.trim();
+    const phone = document.getElementById('delivery-phone').value.trim();
+    const address = document.getElementById('delivery-address').value.trim();
+    const comment = document.getElementById('delivery-comment').value.trim();
+    const payment = document.getElementById('paymentMethod').value;
+
+    if (!name || !phone || !address) {
+      alert("Пожалуйста, заполните все обязательные поля доставки.");
+      return;
+    }
+
+    const confirmationBlock = document.getElementById('confirmationMessage');
+    confirmationBlock.className = 'mt-6 bg-green-100 text-green-800 border border-green-300 p-4 rounded shadow';
+    confirmationBlock.innerHTML = `
+      <strong>Заказ подтверждён!</strong><br>
+      <p><strong>Получатель:</strong> ${name}</p>
+      <p><strong>Телефон:</strong> ${phone}</p>
+      <p><strong>Адрес:</strong> ${address}</p>
+      <p><strong>Комментарий:</strong> ${comment || '—'}</p>
+      <p><strong>Оплата:</strong> ${payment}</p>
+    `;
+
+    localStorage.removeItem('order');
+  }
+
+  document.getElementById('login-tab').addEventListener('click', () => {
+    document.getElementById('login-form').classList.remove('hidden');
+    document.getElementById('registration-form').classList.add('hidden');
+  });
+
+  document.getElementById('register-tab').addEventListener('click', () => {
+    document.getElementById('login-form').classList.add('hidden');
+    document.getElementById('registration-form').classList.remove('hidden');
+  });
+
+  document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password-input').value;
+    const saved = JSON.parse(localStorage.getItem('user'));
+    if (saved && saved.email === email && saved.password === password) {
+      location.reload();
+    } else {
+      alert('Неверный email или пароль');
+    }
+  });
+
+  document.getElementById('registration-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('reg-name').value;
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('register-password-input').value;
+    localStorage.setItem('user', JSON.stringify({ name, email, password }));
+    location.reload();
+  });
+
+  function logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('order');
+    location.reload();
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', logout);
+  document.getElementById('logoutBtnMobile').addEventListener('click', logout);
+  document.getElementById('burgerBtn').addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.toggle('hidden');
+  });
+</script>
+</body>
+</html>

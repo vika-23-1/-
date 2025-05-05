@@ -1,0 +1,197 @@
+<!DOCTYPE html> <!-- Указывает, что используется HTML5 -->
+<html lang="ru"> <!-- Устанавливает язык страницы как русский -->
+<head>
+  <meta charset="UTF-8" /> <!-- Устанавливает кодировку страницы -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Делает страницу адаптивной -->
+  <title>Каталог — Петля моды</title> <!-- Название страницы во вкладке браузера -->
+  <script src="https://cdn.tailwindcss.com"></script> <!-- Подключение Tailwind CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" /> <!-- Подключение шрифта Raleway -->
+  <style>
+    :root { /* Объявление CSS-переменных (цветов) */
+      --main-brown: #5a3e36;
+      --accent-gold: #f2d479;
+      --cream-bg: #faf3e0;
+    }
+    body {
+      background-color: var(--cream-bg); /* Цвет фона страницы */
+      font-family: 'Raleway', sans-serif; /* Основной шрифт текста */
+      color: var(--main-brown); /* Основной цвет текста */
+    }
+    header, footer {
+      background-color: var(--main-brown); /* Цвет фона хедера и футера */
+      color: var(--accent-gold); /* Цвет текста в хедере и футере */
+    }
+    .carousel-track {
+      display: flex; /* Горизонтальный контейнер */
+      animation: scroll 25s linear infinite; /* Анимация прокрутки карусели */
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); } /* Начальное положение */
+      100% { transform: translateX(-50%); } /* Конечное положение (уходит влево) */
+    }
+    .carousel-wrapper {
+      overflow: hidden; /* Скрытие лишних изображений за пределами контейнера */
+      width: 100%;
+      position: relative;
+      background-color: #fffaf3;
+    }
+    .carousel-img {
+      width: 250px; /* Ширина изображений в карусели */
+      height: auto;
+      object-fit: contain; /* Сохраняет пропорции */
+      margin: 0 1rem; /* Горизонтальные отступы между изображениями */
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col"> <!-- Установка минимальной высоты и вертикальной компоновки -->
+
+<!-- ===== ХЕДЕР С ЛОГОТИПОМ И НАВИГАЦИЕЙ ===== -->
+<header class="shadow-md fixed w-full z-50" style="background-color: var(--main-brown); color: var(--accent-gold);">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between py-2 px-3"> <!-- Контейнер навигации -->
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3"> <!-- Логотип с ссылкой на главную -->
+        <img src="images/logo.png" alt="Логотип" class="w-10 h-10 rounded-full border-2" style="border-color: var(--accent-gold);"> <!-- Картинка логотипа -->
+        <div class="text-2xl font-bold">Петля моды</div> <!-- Название бренда -->
+      </a>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-lg font-semibold items-center"> <!-- Меню навигации (ПК) -->
+      <a href="index.html">Главная</a>
+      <a href="catalog.html" class="text-white font-extrabold">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="contact.html">Контакты</a>
+      <a href="cart.html">Корзина</a>
+      <a href="account.html">Аккаунт</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+<main class="flex-grow pt-24 px-6"> <!-- Контейнер основного контента -->
+
+  <!-- Блок с заголовком и каруселью -->
+  <section class="flex flex-col md:flex-row items-center justify-between max-w-screen-xl mx-auto p-6 bg-white rounded-xl shadow mb-16">
+    <div class="flex-1">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Создай свой ретро-стиль с Петлёй моды</h1> <!-- Главный слоган -->
+      <p class="text-lg mb-6">Настоящая мода из прошлого века — в новой жизни. Будь дерзким. Будь ностальгичным.</p>
+    </div>
+    <div class="flex-1 carousel-wrapper mt-12 md:mt-12"> <!-- Обёртка для карусели -->
+      <div class="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-[#faf3e0] to-transparent z-10 pointer-events-none"></div> <!-- Градиент слева -->
+      <div class="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-[#faf3e0] to-transparent z-10 pointer-events-none"></div> <!-- Градиент справа -->
+      <div class="carousel-track space-x-6"> <!-- Карусель изображений -->
+        <img src="images/C1.png" alt="C1" class="rounded-lg w-64 object-contain flex-shrink-0">
+        <img src="images/C2.png" alt="C2" class="rounded-lg w-64 object-contain flex-shrink-0">
+        <img src="images/C3.png" alt="C3" class="rounded-lg w-64 object-contain flex-shrink-0">
+        <img src="images/C4.png" alt="C4" class="rounded-lg w-64 object-contain flex-shrink-0">
+      </div>
+    </div>
+  </section>
+
+  <!-- Выпадающий список сортировки -->
+  <div class="mb-6 flex justify-end max-w-screen-xl mx-auto">
+    <label for="sort" class="mr-2 font-semibold text-lg">Сортировать:</label>
+    <select id="sort" class="border rounded px-3 py-1">
+      <option value="default">По умолчанию</option>
+      <option value="asc">Сначала дешёвые</option>
+      <option value="desc">Сначала дорогие</option>
+    </select>
+  </div>
+
+  <!-- Контейнер для товаров -->
+  <section id="products" class="grid grid-cols-1 md:grid-cols-4 gap-6 justify-items-center mb-20 max-w-screen-xl mx-auto"></section>
+</main>
+
+<!-- Блок «Почему выбирают нас» -->
+<section class="max-w-screen-xl mx-auto text-center p-6">
+  <h2 class="text-3xl font-bold mb-4">Почему выбирают нас?</h2>
+  <p class="text-lg">Мы переносим душу прошлых десятилетий в каждую вещь, создавая уникальные образы для современности.</p>
+</section>
+
+<!-- ===== ФУТЕР ===== -->
+<footer class="bg-[#f3f3f3] text-[--main-brown] text-center text-sm py-8">
+  <div class="text-lg">♡ Этот сайт можно спокойно копировать — мы не против, даже рады. ♡</div>
+  <div class="mt-2">Instagram | Telegram | hello@petlyamody.kz</div>
+  <div class="mt-1 text-xs">P.S. Даже кнопки щеголяют новыми стилями.</div>
+</footer>
+
+<!-- Кнопка «Наверх» -->
+<button id="toTopButton" class="hidden fixed bottom-5 right-5 bg-[--main-brown] text-[--accent-gold] rounded-full p-3 shadow-md hover:opacity-80 transition z-50">↑</button>
+
+<!-- ===== JS-скрипт ===== -->
+<script>
+// Обработка кнопки "Наверх"
+const toTopButton = document.getElementById('toTopButton');
+if (toTopButton) {
+  window.addEventListener('scroll', () => {
+    toTopButton.classList.toggle('hidden', window.scrollY <= 300);
+  });
+  toTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// Список товаров
+const products = [
+  {name: 'Олимпийка СССР', image: 'images/1.png', desc: 'Легендарная олимпийка с надписью «СССР».', price: 14500, link: 'product1.html'},
+  {name: 'Ветровка Color Wave', image: 'images/2.png', desc: 'Пёстрая ветровка с цветными геометрическими вставками.', price: 16000, link: '404.html'},
+  {name: 'Свитер Neon Shapes', image: 'images/3.png', desc: 'Свитер с яркими фигурами в стиле 90-х.', price: 15000, link: 'product3.html'},
+  {name: 'Ветровка Energy Rush', image: 'images/4.png', desc: 'Яркая ветровка с акцентными вставками.', price: 16500, link: 'product4.html'}
+];
+
+// Функция отображения товаров на странице
+function renderProducts(productList) {
+  const container = document.getElementById('products');
+  container.innerHTML = ''; // Очищаем контейнер
+  productList.forEach((p, index) => {
+    const card = document.createElement('div');
+    card.className = 'rounded-lg shadow hover:shadow-xl transition flex flex-col justify-between w-full max-w-[320px] mx-auto bg-white group';
+    card.innerHTML = `
+      <div class="overflow-hidden flex items-center justify-center p-2">
+        <img src="${p.image}" alt="${p.name}" class="h-[300px] object-contain w-full" />
+      </div>
+      <div class="p-3 flex flex-col gap-2">
+        <h3 class="text-lg font-bold leading-tight">${p.name}</h3>
+        <p class="text-sm text-gray-700">${p.desc}</p>
+        <p class="text-lg font-extrabold mt-1">${p.price.toLocaleString()} KZT</p>
+        <a href="${p.link}" class="text-sm underline text-[--main-brown] hover:text-[--accent-gold]">Подробнее</a>
+        <select id="size-${index}" class="border p-2 rounded">
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+        <button onclick="addToCart('${p.name}', ${p.price}, '${p.image}', 'size-${index}')" class="mt-3 bg-[--main-brown] text-[--accent-gold] font-extrabold py-2 rounded-md hover:opacity-90 transition">Добавить</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Функция добавления товара в localStorage
+function addToCart(name, price, image, sizeId) {
+  const size = document.getElementById(sizeId).value;
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  cart.push({ name, price, image, size, quantity: 1 });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Товар добавлен в корзину!");
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts(products); // Выводим товары
+  const sortSelect = document.getElementById('sort');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', function () {
+      const value = this.value;
+      let sorted = [...products];
+      if (value === 'asc') sorted.sort((a, b) => a.price - b.price); // Сортировка по возрастанию
+      if (value === 'desc') sorted.sort((a, b) => b.price - a.price); // Сортировка по убыванию
+      renderProducts(sorted); // Перерисовка списка
+    });
+  }
+});
+</script>
+
+</body>
+</html>

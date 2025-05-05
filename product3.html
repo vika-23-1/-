@@ -1,0 +1,80 @@
+<!DOCTYPE html> <!-- Объявление типа документа HTML5 -->
+<html lang="ru"> <!-- Язык документа — русский -->
+<head>
+  <meta charset="utf-8" /> <!-- Кодировка символов UTF-8 -->
+  <title>Пример товара — Петля моды</title> <!-- Заголовок страницы -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Адаптивность для всех экранов -->
+  <link href="https://fonts.googleapis.com/css2?family=Pilowlava&display=swap" rel="stylesheet" /> <!-- Подключение декоративного шрифта -->
+  <script src="https://cdn.tailwindcss.com"></script> <!-- Подключение Tailwind CSS -->
+  <style>
+    :root {
+      --main-brown: #5a3e36;       /* Основной коричневый цвет */
+      --accent-gold: #f2d479;      /* Акцентный золотой цвет */
+      --cream-bg: #faf3e0;         /* Цвет фона страницы */
+    }
+    body {
+      background: var(--cream-bg);
+      color: var(--main-brown);
+      font-family: 'Pilowlava', cursive;
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid var(--main-brown);
+      padding: 0.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="pt-[72px]"> <!-- Отступ сверху под фиксированное меню -->
+
+<!-- Закреплённое меню -->
+<header class="fixed top-0 left-0 right-0 shadow-md z-50" style="background-color: var(--main-brown); color: var(--accent-gold);">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between py-2 px-3">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="images/logo.png" alt="Логотип" class="w-10 h-10 rounded-full border-2" style="border-color: var(--accent-gold);">
+      <div class="text-2xl font-bold">Петля моды</div>
+    </a>
+    <nav class="hidden md:flex space-x-6 text-lg font-semibold items-center">
+      <a href="index.html" class="hover:text-white">Главная</a>
+      <a href="catalog.html" class="hover:text-white">Каталог</a>
+      <a href="about.html" class="hover:text-white">О нас</a>
+      <a href="contact.html" class="hover:text-white">Контакты</a>
+      <a href="cart.html" class="hover:text-white">Корзина</a>
+      <a href="account.html" class="hover:text-white">Аккаунт</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Контент -->
+<main class="max-w-screen-xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 items-start justify-between">
+  <div class="w-full md:w-1/2 flex justify-center">
+    <img src="images/3.png" alt="Ветровка Energy Rush" class="w-[300px] rounded-lg shadow">
+  </div>
+
+  <div class="w-full md:w-1/2">
+    <h2 class="text-2xl font-bold mb-2">Размеры</h2>
+    <table class="mb-6 w-full">
+      <thead>
+        <tr><th>Размер</th><th>Грудь (см)</th><th>Длина (см)</th><th>Рукав (см)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>S</td><td>90</td><td>65</td><td>58</td></tr>
+        <tr><td>M</td><td>96</td><td>67</td><td>60</td></tr>
+        <tr><td>L</td><td>102</td><td>69</td><td>62</td></tr>
+        <tr><td>XL</td><td>108</td><td>71</td><td>64</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Кнопка "Вернуться в каталог" -->
+<div class="text-center my-6">
+  <a href="catalog.html" class="inline-block bg-[#5a3e36] text-[#f2d479] px-6 py-2 rounded hover:opacity-90 font-semibold text-lg">← Вернуться в каталог</a>
+</div>
+
+</body>
+</html>
